@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Gallery App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Image Gallery</h1>
+    <p>Click on an image to view</p>
+</header>
+
+<section class="gallery">
+    <div class="gallery-item">
+        <img src="img1.webp" alt="Nature" data-caption="Nature View">
+    </div>
+    <div class="gallery-item">
+        <img src="img2.jpg" alt="City" data-caption="City Life">
+    </div>
+    <div class="gallery-item">
+        <img src="img3.jpg" alt="Mountains" data-caption="Mountains">
+    </div>
+    <div class="gallery-item">
+        <img src="img4.jpg" alt="Beach" data-caption="Beach">
+        
+    </div>
+    <div class="gallery-item">
+        <img src="img5.webp" alt="Sunset" data-caption="Sunset">
+    </div>
+    <div class="gallery-item">
+        <img src="img6.jpg" alt="Forest" data-caption="Forest">
+        <div class="caption">Forest</div>
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal" id="imageModal">
+    <span class="close">&times;</span>
+    <img class="modal-img" id="modalImg">
+    <p id="modalCaption"></p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
