@@ -1,0 +1,242 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins','sans-serif';
+    box-sizing: border-box;
+}
+
+.container{
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg,#153677,#4e085f);
+    padding: 10px;
+}
+
+.todo-app{
+    width: 50%;
+    max-width: 540px;
+    background-color: #fff;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.todo-app h2{
+    color:#002765;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+
+.todo-app h2 img{
+    width: 30px;
+    margin-left: 10px;
+  
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    background-color: #edeef0;
+    border-radius: 30px;
+    padding-left: 20px;
+    margin-bottom: 25px;
+    gap: 10px;
+
+}
+
+input{
+    flex: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 10px;
+    font-size: 20px;
+    
+}
+
+input::placeholder{
+    color:linear-gradient(135deg,#153677,#4e085f);
+}
+
+.row button{
+    border: none;
+    outline: none;
+    background-color: #f12812;
+    color: #fff;
+    padding: 16px 40px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 40px;
+}
+
+.row button:hover{
+    background-color: #931203;
+}
+
+ul li{
+    list-style: none;
+    font-size: 17px;
+    padding: 12px 8px 12px 50px;
+    margin: 20px;
+    user-select: none;
+    border-radius: 12px;
+    list-style: none;
+    position: relative;
+    color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+    background: linear-gradient(135deg,#336de2,#760692);
+    
+}
+
+ul li::before{
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    top: 14px;
+    left: 15px;
+}
+
+.completed{
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.completed::before{
+    content: "✓";
+    left: 15px;
+    top: 11px;
+    font-size: 16px;
+}
+
+.actions{
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.actions button {
+      margin-left: 15px;
+      font-size: 20px;
+      position: relative;
+      padding: 6px;
+      border-radius: 20px;
+}
+
+.actions button.complete {
+    background-color: transparent;
+    border-color: rgb(47, 239, 47);
+}
+
+.actions button.complete:hover{
+   
+    background-color: rgb(47, 239, 47);
+    border-color: rgb(3, 94, 3);
+}
+
+.actions button.delete {
+    background-color: transparent;
+    border-color: rgb(239, 46, 16);
+}
+
+.actions button.delete:hover{
+   
+    background-color: rgb(241, 61, 33);
+    border-color: rgb(82, 15, 5);
+}
+
+.actions button:hover{
+    transform: scale(1.2);
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+================================ */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .todo-app h2 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .row input {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .row button {
+        width: 100%;
+        padding: 12px;
+    }
+
+    ul li {
+        font-size: 16px;
+        padding: 12px 10px;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+        border-radius: 12px;
+        padding: 20px;
+        padding-right: 50px;
+        max-width: 400px;
+        margin: auto;
+    }
+
+    .todo-app{
+        padding: 40px;
+    }
+
+    .todo-app h2 {
+        font-size: 20px;
+    }
+
+    .row button {
+        border-radius: 20px;
+        padding: 12px 20px;
+    }
+
+    ul li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .actions {
+        align-self: flex-end;
+        margin-top: 8px;
+    }
+
+    .row input {
+        width: 100%;
+        border-radius: 20px;
+    }   
+}
