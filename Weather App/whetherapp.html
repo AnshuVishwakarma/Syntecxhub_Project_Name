@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>whether App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card">
+        <div class="search">
+            <input type="text" placeholder="enter your city name" spellcheck="false">
+            <button class="click"><img src="images/serach.jpg"></button>
+        </div>
+        <div class="error">
+            <p>Invalid city name</p>
+        </div>
+        <div class="whether">
+            <img src="images/rainy.png" class="whether-icon">
+            <h1 class="temp">26°C</h1> 
+            <h2 class="city">Indore</h2>
+            <div class="details">
+                <div class="col">
+                <img src="images/humidity.webp">
+                <div>
+                    <p class="humidity">50%</p>
+                    <p>humidity</p>
+                </div>
+            </div>
+            <div class="col">
+                <img src="images/wind.jpg">
+                <div>
+                    <p class="wind">15km/h</p>
+                    <p>wind speed</p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const apiKey="9073a0141f06281bb9d9b4b9052ccec3";
+        const apiUrl="https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+        const searchBox=document.querySelector(".search input");
+        const searchButt=document.querySelector(".search button");
+        const whetherIcon=document.querySelector(".whether-icon")
+        async function checkwhether(city) {
+            try{
+                const responce=await fetch(apiUrl +city+`&appid=${apiKey}`)
+                console.log(responce);
+                const data = await responce.json();
+                console.log(data)
+                if(data.cod==404){
+                document.querySelector(".error").style.display="block";
+                document.querySelector(".whether").style.display="none";
+                return;
+                }
+
+                document.querySelector(".city").innerHTML=data.name;
+                document.querySelector(".temp").innerHTML=Math.round(data.main.temp)+"°C";
+                document.querySelector(".humidity").innerHTML=data.main.humidity+"%";
+                document.querySelector(".wind").innerHTML=data.wind.speed + "m/s";
+                // Change weather icon
+                const condition = data.weather[0].main;
+
+                if(condition=="Clouds"){
+                    whetherIcon.src="images/cloudy.avif"
+                } else if (condition == "Clear") {
+                    whetherIcon.src = "images/clear.png";
+                } else if (condition == "Rain") {
+                    whetherIcon.src = "images/rainy.png";
+                } else if (condition == "Drizzle") {
+                    whetherIcon.src = "images/drizzle.png";
+                } else if (condition == "Mist") {
+                    whetherIcon.src = "images/mist.png";
+                }else if(condition=="Haze"){
+                    whetherIcon.src="images/haze.png"
+                }
+                else {
+                // Default icon if weather condition not matched
+                whetherIcon.src = "images/default.png";
+            }
+                // Update page background to match condition
+                changeBackground(condition);
+                document.querySelector(".whether").style.display="block"
+                document.querySelector(".error").style.display="none"
+                
+            }
+            catch(error){
+                alert("Something went wrong!");
+            }
+        }
+
+        // Background Change Function
+        function changeBackground(condition) {
+            let bgImage = "";
+
+            // Prefer local images in the images/ folder; fall back to remote Unsplash images
+            if (condition == "Clear") {
+                bgImage = "url('https://images.unsplash.com/photo-1501973801540-537f08ccae7b')";
+            } else if (condition == "Clouds") {
+                bgImage = "url('https://images.unsplash.com/photo-1501630834273-4b5604d2ee31')";
+            } else if (condition == "Rain" || condition == "Drizzle") {
+                bgImage = "url('https://images.unsplash.com/photo-1499346030926-9a72daac6c63')";
+            } else if (condition == "Mist") {
+                bgImage = "url('https://images.unsplash.com/photo-1502082553048-f009c37129b9')";
+            } else if (condition == "Haze") {
+                bgImage = "url('https://images.unsplash.com/photo-1492724441997-5dc865305da7')";
+            } else {
+                bgImage = "url('https://images.unsplash.com/photo-1492724441997-5dc865305da7')";
+            }
+
+            document.body.style.backgroundImage = bgImage;
+            document.body.style.backgroundSize = "cover";
+            document.body.style.backgroundPosition = "center";
+            document.body.style.backgroundRepeat = "no-repeat";
+        }
+
+        searchButt.addEventListener("click",()=>{
+            checkwhether(searchBox.value.trim());
+        })
+
+        // Press Enter to search
+        searchBox.addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                checkwhether(searchBox.value.trim());
+            }
+        });
+        
+
+    </script>
+
+
+</body>
+</html>

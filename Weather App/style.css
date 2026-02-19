@@ -1,0 +1,145 @@
+*{
+    padding: 0;
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    box-sizing: border-box;
+}
+body{
+    background-color: #222;
+    background-image: url('https://source.unsplash.com/1600x900/?landscape');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 0.6s ease-in-out;
+    min-height: 100vh;
+
+}
+.card{
+    width: 90%;
+    max-width: 470px;
+     backdrop-filter: blur(10px);
+    /* Make card translucent so body's background is visible behind it */
+    background: linear-gradient(135deg,#7ff1d3,#3c3181);;
+    /* background: linear-gradient(135deg, rgba(235, 135, 233, 0.12), rgba(111, 91, 246, 0.12)); */
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #fff;
+    margin: 100px auto 0;
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+}
+.search{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.search input{
+    border: 0;
+    outline: 0;
+    background-color: #ebfffc;
+    color: #2a2929;
+    padding: 10px 25px;
+    height:60px ;
+    flex: 1;
+    margin-right:16px ;
+    font-size: 18px;
+    border-radius: 35px;
+}
+.search button{
+    border: 0;
+    outline: 0;
+    background-color: #ebfffc;
+    color: #ebfffc;
+    width: 60px;
+    height:60px ;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search button img{
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+.whether-icon{
+    width: 170px;
+    height: 200px;
+    margin-top: 30px;
+}
+.whether h1{
+    font-size: 80px;
+    font-weight: 500;
+}
+.whether h2{
+    font-size: 45px;
+    font-weight: 400;
+    margin-top: -10px;
+}
+.details{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-top: 50px;
+
+}
+.col{
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+.col img{
+    width: 40px;
+    /* height: 200px; */
+    margin-right: 10px;
+}
+.humidity,.wind{
+    font-size: 28px;
+    margin-top: -6px;
+}
+.whether{
+    display: none;
+}
+.error{
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    display: none;
+    font-size: 14px;
+}
+
+@media (max-width: 480px){
+    .card{
+        padding: 30px 20px;
+    }
+
+    .whether h1{
+        font-size: 60px;
+    }
+    .search input{
+        height: 50px;
+        font-size: 16px;
+    }
+
+    .search button{
+        width: 50px;
+        height: 50px;
+    }
+
+    .search button img{
+        width: 30px;
+        height: 30px;
+    }
+
+    .whether h2{
+        font-size: 30px;
+    }
+
+    .details{
+        flex-direction: column;
+        gap: 20px;
+    }
+}
